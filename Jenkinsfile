@@ -15,15 +15,15 @@ sh 'python3 Exe_1_python.py'
 stage('Building our image') {
 steps{
 script {
-  sh 'docker build .'
-  sh 'docker tag 554b432c22d7:latest apurvanehete/softnauticsllp:new_image'
+  dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
 }
 }
 stage('Deploy our image') {
 steps{
 script {
-  sh 'docker push apurvanehete/softnauticsllp:new_image'
+  docker.withRegistry( '', registryCredential ) {
+  dockerImage.push()
 }
 }
 }
