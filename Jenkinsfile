@@ -15,8 +15,8 @@ sh 'python3 Exe_1_python.py'
 stage('Building our image') {
 steps{
 script {
-  sh 'sudo docker build .'
-  sh 'sudo docker tag 554b432c22d7:latest apurvanehete/softnauticsllp:new_image'
+  sh 'docker build .'
+  sh 'docker tag 554b432c22d7:latest apurvanehete/softnauticsllp:new_image'
 }
 }
 }
@@ -31,7 +31,7 @@ dockerImage.push()
 }
 stage('Cleaning up') {
 steps{
-sh "sudo docker rmi $registry:$BUILD_NUMBER"
+sh "docker rmi $registry:$BUILD_NUMBER"
 }
 }
 }
