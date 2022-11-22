@@ -15,8 +15,8 @@ sh 'python3 Exe_1_python.py'
 stage('Building our image') {
 steps{
 script {
-
- sh 'sudo docker build . -t apurvanehete/softnauticsllp:1'
+  sh 'sudo docker build .'
+  sh 'sudo docker tag 554b432c22d7:latest apurvanehete/softnauticsllp:new_image'
 }
 }
 }
