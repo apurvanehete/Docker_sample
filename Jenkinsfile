@@ -24,8 +24,7 @@ steps{
 script {
   withCredentials([usernamePassword(credentialsId: 'Docker_ID', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
   sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-  docker.withRegistry( '', registryCredential ) {
-    dockerImage.push()}}
+  sh 'docker push registry:$BUILD_NUMBER'}
 }
 }
 }
