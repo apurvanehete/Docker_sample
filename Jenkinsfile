@@ -16,7 +16,7 @@ stage('Building our image') {
 steps{
 script {
 
- sh 'docker build . -t apurvanehete/softnauticsllp:1'
+ sh 'sudo docker build . -t apurvanehete/softnauticsllp:1'
 }
 }
 }
@@ -31,7 +31,7 @@ dockerImage.push()
 }
 stage('Cleaning up') {
 steps{
-sh "docker rmi $registry:$BUILD_NUMBER"
+sh "sudo docker rmi $registry:$BUILD_NUMBER"
 }
 }
 }
